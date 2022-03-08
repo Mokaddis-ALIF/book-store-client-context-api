@@ -1,0 +1,28 @@
+.header-2 {
+	background: var(--green);
+}
+
+.header-2 .navbar {
+	text-align: center;
+}
+
+.header-2 .navbar a {
+	color: #fff;
+	display: inline-block;
+	padding: 1.2rem;
+	font-size: 1.7rem;
+}
+
+.header-2 .navbar a:hover {
+	background: var(--dark-color);
+}
+
+@media (max-width: 768px) {
+	.header-2 {
+		display: none;
+	}
+
+	.bottom-navbar {
+		display: block;
+	}
+}

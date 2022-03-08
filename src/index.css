@@ -1,13 +1,113 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
+
+:root {
+	--green: #27ae60;
+	--dark-color: #219150;
+	--black: #444;
+	--light-color: #666;
+	--border: 0.1rem solid rgba(0, 0, 0, 0.1);
+	--border-hover: 0.1rem solid var(--black);
+	--box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+	font-family: 'Poppins', sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none;
+	border: none;
+	text-decoration: none;
+	text-transform: capitalize;
+	transition: all 0.2s linear;
+	transition: width none;
+}
+
+html {
+	font-size: 62.5%;
+	overflow-x: hidden;
+	scroll-padding-top: 5rem;
+	scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar {
+	width: 1rem;
+}
+
+html::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+	background: var(--black);
+}
+
+section {
+	padding: 5rem 9%;
+}
+
+.heading {
+	text-align: center;
+	margin-bottom: 2rem;
+	position: relative;
+}
+
+.heading::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	width: 100%;
+	height: 0.01rem;
+	background: rgba(0, 0, 0, 0.1);
+	z-index: -1;
+}
+
+.heading span {
+	font-size: 3rem;
+	padding: 0.5rem 2rem;
+	color: var(--black);
+	background: #fff;
+	border: var(--border);
+}
+
+.btn {
+	margin-top: 1rem;
+	display: inline-block;
+	padding: 0.9rem 3rem;
+	border-radius: 0.5rem;
+	color: #fff;
+	background: var(--green);
+	font-size: 1.7rem;
+	cursor: pointer;
+	font-weight: 500;
+}
+
+.btn:hover {
+	background: var(--dark-color);
+}
+
+@media (max-width: 991px) {
+	html {
+		font-size: 55%;
+	}
+
+	.header .header-1 {
+		padding: 2rem;
+	}
+
+	section {
+		padding: 3rem 2rem;
+	}
+}
+
+@media (max-width: 768px) {
+	html {
+		scroll-padding-top: 0;
+	}
+
+	body {
+		padding-bottom: 6rem;
+	}
 }
