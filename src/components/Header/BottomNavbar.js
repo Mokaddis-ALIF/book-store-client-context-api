@@ -9,7 +9,7 @@ import { ImBlogger } from 'react-icons/im';
 const BottomNavbar = () => {
 	return (
 		<>
-			<nav class="bottom-navbar">
+			<nav className="bottom-navbar">
 				<a href="#home">
 					<AiOutlineHome id="nav__icon" />
 				</a>

@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './Header1.css';
 import { RiBook3Line } from 'react-icons/ri';
 import { RiDashboardFill } from 'react-icons/ri';
 import { BsFillCartFill } from 'react-icons/bs';
 import { FaUserAlt } from 'react-icons/fa';
 import { BsSearch } from 'react-icons/bs';
+import CartContext from '../../store/cart-context';
 
-const Header1 = () => {
+const Header1 = (props) => {
 	const [showForm, setShowForm] = useState(false);
+	const cartCtx = useContext(CartContext);
+
+	console.log(cartCtx.items);
+
+	const cartItemNumbers = cartCtx.items.reduce((curNumber, item) => {
+		return curNumber + item.amount;
+	}, 0);
 
 	const showFormController = () => {
 		setShowForm(!showForm);
@@ -20,32 +28,6 @@ const Header1 = () => {
 					{' '}
 					<RiBook3Line /> bookly{' '}
 				</a>
-
-				{/* {showForm ? (
-					<form action="" className="search-form">
-						<input
-							type="search"
-							name=""
-							placeholder="search here..."
-							id="search-box"
-						/>
-						<label for="search-box">
-							<BsSearch />
-						</label>
-					</form>
-				) : (
-					<form action="" className="search-form active">
-						<input
-							type="search"
-							name=""
-							placeholder="search here..."
-							id="search-box"
-						/>
-						<label for="search-box">
-							<BsSearch />
-						</label>
-					</form>
-				)} */}
 
 				<form action="" className="search-form">
 					<input
@@ -67,7 +49,7 @@ const Header1 = () => {
 							placeholder="search here..."
 							id="search-box"
 						/>
-						<label for="search-box">
+						<label htmlFor="search-box">
 							<BsSearch />
 						</label>
 					</form>
@@ -83,7 +65,10 @@ const Header1 = () => {
 					</div>
 
 					<RiDashboardFill />
-					<BsFillCartFill />
+					<div className="cart" onClick={props.onShowCart}>
+						<BsFillCartFill />
+						{cartItemNumbers !== 0 ? cartItemNumbers : ''}
+					</div>
 					<FaUserAlt />
 				</div>
 			</div>
