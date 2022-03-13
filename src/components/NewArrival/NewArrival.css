@@ -40,6 +40,10 @@
 	color: var(--green);
 }
 
+/* #star_icon:last-child {
+	background-color: var(--green);
+} */
+
 .mySwiper {
 	display: flex;
 	flex-direction: row;

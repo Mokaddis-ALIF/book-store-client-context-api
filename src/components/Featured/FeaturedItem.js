@@ -4,11 +4,11 @@ import CartContext from '../../store/cart-context';
 const FeaturedItem = ({ item }) => {
 	const cartCtx = useContext(CartContext);
 
-	const { img, name, discountedPrice, price, id } = item;
+	const { img, name, discountedPrice, price, _id } = item;
 
 	const addToCartHandler = () => {
 		cartCtx.addItem({
-			id: id,
+			id: _id,
 			name: name,
 			amount: 1,
 			price: price,
@@ -18,7 +18,7 @@ const FeaturedItem = ({ item }) => {
 	return (
 		<>
 			<div className="image">
-				<img src={img} alt="" />
+				<img src={img ? img : "Can't load the photo"} alt="" />
 			</div>
 
 			<div className="content">

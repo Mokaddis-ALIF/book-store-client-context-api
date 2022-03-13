@@ -1,6 +1,5 @@
 import React from 'react';
 import './HomeBanner.css';
-import { bookData } from '../Data/Data';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -11,7 +10,7 @@ import 'swiper/css/pagination';
 // import required modules
 import { Pagination } from 'swiper';
 
-const HomeBanner = () => {
+const HomeBanner = ({ products }) => {
 	return (
 		<>
 			<section className="home" id="home">
@@ -41,7 +40,7 @@ const HomeBanner = () => {
         </div> */}
 
 					<Swiper
-						classNameName="books-slider"
+						className="books-slider"
 						breakpoints={{
 							// when window width is >= 640px
 							640: {
@@ -60,8 +59,8 @@ const HomeBanner = () => {
 						}}
 						modules={[Pagination]}
 					>
-						{bookData.slice(0, 8).map((product) => (
-							<SwiperSlide classNameName="swiper-slide" key={product.id}>
+						{products.slice(0, 8).map((product) => (
+							<SwiperSlide className="swiper-slide" key={product.id}>
 								<img src={product.img} alt="" />
 							</SwiperSlide>
 						))}

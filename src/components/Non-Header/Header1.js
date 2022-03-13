@@ -6,12 +6,11 @@ import { BsFillCartFill } from 'react-icons/bs';
 import { FaUserAlt } from 'react-icons/fa';
 import { BsSearch } from 'react-icons/bs';
 import CartContext from '../../store/cart-context';
+import { Link } from 'react-router-dom';
 
 const Header1 = (props) => {
 	const [showForm, setShowForm] = useState(false);
 	const cartCtx = useContext(CartContext);
-
-	console.log(cartCtx.items);
 
 	const cartItemNumbers = cartCtx.items.reduce((curNumber, item) => {
 		return curNumber + item.amount;
@@ -24,10 +23,9 @@ const Header1 = (props) => {
 	return (
 		<>
 			<div className="header-1">
-				<a href="#" className="logo">
-					{' '}
-					<RiBook3Line /> bookly{' '}
-				</a>
+				<Link to="/" className="logo">
+					<RiBook3Line /> Bookly
+				</Link>
 
 				<form action="" className="search-form">
 					<input
@@ -69,6 +67,7 @@ const Header1 = (props) => {
 						<BsFillCartFill />
 						{cartItemNumbers !== 0 ? cartItemNumbers : ''}
 					</div>
+
 					<FaUserAlt />
 				</div>
 			</div>

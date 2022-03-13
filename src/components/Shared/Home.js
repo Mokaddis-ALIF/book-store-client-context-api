@@ -1,38 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Cart from '../Cart/Cart';
 import Deal from '../Deal/Deal';
 import Featured from '../Featured/Featured';
-import Footer from '../Footer/Footer';
-import BottomNavbar from '../Header/BottomNavbar';
-import Header1 from '../Header/Header1';
-import Header2 from '../Header/Header2';
+// import BottomNavbar from '../Non-Header/BottomNavbar';
+// import Header1 from '../Header/Header1';
+// import Header2 from '../Header/Header2';
 import HomeBanner from '../HomeBanner/HomeBanner';
 import IconContainer from '../IconContainer/IconContainer';
 import NewArrival from '../NewArrival/NewArrival';
 import NewsLetter from '../NewsLetter/NewsLetter';
 import Reviews from '../Reviews/Reviews';
+import Footer from '../Footer/Footer';
 
-const Home = () => {
-	const [cartIsSHown, setCartIsShown] = useState(false);
+const Home = ({ cartIsSHown, hideCartHandler }) => {
+	const [products, setProducts] = useState([]);
 
-	const showCartHandler = () => {
-		setCartIsShown(true);
-	};
+	useEffect(() => {
+		fetch(`http://localhost:5000/products`)
+			.then((res) => res.json())
+			.then((data) => setProducts(data));
+	}, []);
 
-	const hideCartHandler = () => {
-		setCartIsShown(false);
-	};
 	return (
 		<>
 			{cartIsSHown && <Cart onClose={hideCartHandler} />}
-			{<Header1 onShowCart={showCartHandler} />}
-			<Header2 />
-			<BottomNavbar />
-			<HomeBanner />
+			{/* {<Header1 onShowCart={showCartHandler} />}
+			<Header2 /> */}
+			{/* <BottomNavbar /> */}
+			<HomeBanner products={products} />
 			<IconContainer />
-			<Featured />
+			<Featured products={products} />
 			<NewsLetter />
-			<NewArrival />
+			<NewArrival products={products} />
 			<Deal />
 			<Reviews />
 			<Footer />

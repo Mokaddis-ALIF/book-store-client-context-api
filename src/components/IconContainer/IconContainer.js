@@ -35,11 +35,11 @@ const iconData = [
 const IconContainer = () => {
 	return (
 		<>
-			<section class="icons-container">
+			<section className="icons-container">
 				{iconData.map((item) => (
-					<div class="icons" key={item.id}>
+					<div className="icons" key={item.id}>
 						<item.icon id="icon-item" />
-						<div class="content">
+						<div className="content">
 							<h3>{item.title}</h3>
 							<p>{item.condition}</p>
 						</div>

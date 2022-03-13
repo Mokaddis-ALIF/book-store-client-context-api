@@ -1,10 +1,9 @@
 import React from 'react';
 import './NewArrival.css';
-import { BsStar } from 'react-icons/bs';
+import { BsFillStarFill } from 'react-icons/bs';
 import { BsStarHalf } from 'react-icons/bs';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { bookData } from '../Data/Data';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -14,7 +13,7 @@ import 'swiper/css/pagination';
 // import required modules
 import { Pagination, Navigation } from 'swiper';
 
-const NewArrival = () => {
+const NewArrival = ({ products }) => {
 	return (
 		<>
 			<section className="arrivals" id="arrivals">
@@ -47,8 +46,8 @@ const NewArrival = () => {
 						modules={[Pagination, Navigation]}
 						className="mySwiper"
 					>
-						{bookData.map((item) => (
-							<SwiperSlide key={item.id} className="swiper-slide box">
+						{products.slice(3, 9).map((item) => (
+							<SwiperSlide key={item._id} className="swiper-slide box">
 								<div className="image">
 									<img src={item.img} alt="" />
 								</div>
@@ -58,10 +57,10 @@ const NewArrival = () => {
 										${item.discountedPrice} <span>${item.price}</span>
 									</div>
 									<div className="stars">
-										<BsStar id="star_icon" />
-										<BsStar id="star_icon" />
-										<BsStar id="star_icon" />
-										<BsStar id="star_icon" />
+										<BsFillStarFill id="star_icon" />
+										<BsFillStarFill id="star_icon" />
+										<BsFillStarFill id="star_icon" />
+										<BsFillStarFill id="star_icon" />
 										<BsStarHalf id="star_icon" />
 									</div>
 								</div>

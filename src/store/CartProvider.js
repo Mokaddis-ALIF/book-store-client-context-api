@@ -55,6 +55,10 @@ const cartReducer = (state, action) => {
 		};
 	}
 
+	// if(action.type === 'REMOVE-ITEM'){
+
+	// }
+
 	return defaultCartState;
 };
 

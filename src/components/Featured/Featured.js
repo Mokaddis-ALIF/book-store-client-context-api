@@ -1,9 +1,6 @@
 import React from 'react';
 import './Featured.css';
-import { bookData } from '../Data/Data';
-import { FiSearch } from 'react-icons/fi';
-import { BsEye } from 'react-icons/bs';
-import { FiHeart } from 'react-icons/fi';
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
@@ -15,7 +12,7 @@ import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper';
 import FeaturedItem from './FeaturedItem';
 
-const Featured = () => {
+const Featured = ({ products }) => {
 	return (
 		<>
 			<section className="featured" id="featured">
@@ -34,10 +31,10 @@ const Featured = () => {
 							// when window width is >= 768px
 							998: {
 								width: 998,
-								slidesPerView: 3,
+								slidesPerView: 4,
 							},
 						}}
-						spaceBetween={30}
+						spaceBetween={20}
 						slidesPerGroup={3}
 						loop={true}
 						loopFillGroupWithBlank={true}
@@ -48,8 +45,8 @@ const Featured = () => {
 						modules={[Pagination, Navigation]}
 						className="swiper-wrapper"
 					>
-						{bookData.map((item) => (
-							<SwiperSlide key={item.id} className="swiper-slide box">
+						{products.slice(0, 12).map((item) => (
+							<SwiperSlide key={item._id} className="swiper-slide box">
 								{/* <div className="icons">
 								<FiSearch id="f-icon" />
 								<FiHeart id="f-icon" />

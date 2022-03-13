@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import CartContext from '../../store/cart-context';
 import Modal from '../UI/Modal';
 import classes from './Cart.module.css';
@@ -49,7 +50,9 @@ const Cart = (props) => {
 					Close
 				</button>
 				{/* {hasItems && <button className={classes.button}>Order</button>} */}
-				{hasItems && <button className="btn">Order</button>}
+				<Link to="/order">
+					{hasItems && <button className="btn">Order</button>}
+				</Link>
 			</div>
 		</Modal>
 	);
