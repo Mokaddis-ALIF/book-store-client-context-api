@@ -64,6 +64,13 @@
 	padding: 0.8rem 1.3rem;
 }
 
+.link-icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: black;
+}
+
 .cart {
 	display: flex;
 	align-items: center;

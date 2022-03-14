@@ -50,7 +50,7 @@ const Cart = (props) => {
 					Close
 				</button>
 				{/* {hasItems && <button className={classes.button}>Order</button>} */}
-				<Link to="/order">
+				<Link to="/orders">
 					{hasItems && <button className="btn">Order</button>}
 				</Link>
 			</div>

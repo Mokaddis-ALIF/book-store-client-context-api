@@ -33,12 +33,12 @@ const Login = () => {
 
 	return (
 		<div className="login-page">
-			<div class="login">
-				<div class="login-triangle"></div>
+			<div className="login">
+				<div className="login-triangle"></div>
 
-				<h2 class="login-header">Login</h2>
+				<h2 className="login-header">Login</h2>
 
-				<form class="login-container" onSubmit={handleLoginSubmit}>
+				<form className="login-container" onSubmit={handleLoginSubmit}>
 					<p>
 						<input
 							type="email"

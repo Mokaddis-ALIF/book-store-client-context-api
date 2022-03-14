@@ -19,6 +19,10 @@
 	font-size: 2rem;
 }
 
+.bottom-navbar:last-child {
+	color: white;
+}
+
 .bottom-navbar a:hover {
 	background: var(--dark-color);
 }

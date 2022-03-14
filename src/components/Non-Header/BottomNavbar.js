@@ -10,9 +10,9 @@ const BottomNavbar = () => {
 	return (
 		<>
 			<nav className="bottom-navbar">
-				<a href="#home">
+				{/* <a href="#featured">
 					<AiOutlineHome id="nav__icon" />
-				</a>
+				</a> */}
 				<a href="#featured">
 					<MdOutlineFeaturedPlayList id="nav__icon" />
 				</a>
@@ -22,7 +22,7 @@ const BottomNavbar = () => {
 				<a href="#reviews">
 					<MdOutlineRateReview id="nav__icon" />
 				</a>
-				<a href="#blogs">
+				<a href="#newsletter">
 					<ImBlogger id="nav__icon" />
 				</a>
 			</nav>

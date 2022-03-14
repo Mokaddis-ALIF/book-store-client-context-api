@@ -3,14 +3,17 @@ import './Header1.css';
 import { RiBook3Line } from 'react-icons/ri';
 import { RiDashboardFill } from 'react-icons/ri';
 import { BsFillCartFill } from 'react-icons/bs';
-import { FaUserAlt } from 'react-icons/fa';
+import { AiOutlineUserAdd } from 'react-icons/ai';
+import { AiOutlineUserDelete } from 'react-icons/ai';
 import { BsSearch } from 'react-icons/bs';
 import CartContext from '../../store/cart-context';
 import { Link } from 'react-router-dom';
+import useAuth from '../../Hooks/useAuth';
 
 const Header1 = (props) => {
 	const [showForm, setShowForm] = useState(false);
 	const cartCtx = useContext(CartContext);
+	const { user, logOut } = useAuth();
 
 	const cartItemNumbers = cartCtx.items.reduce((curNumber, item) => {
 		return curNumber + item.amount;
@@ -34,7 +37,7 @@ const Header1 = (props) => {
 						placeholder="search here..."
 						id="search-box"
 					/>
-					<label for="search-box">
+					<label htmlFor="search-box">
 						<BsSearch />
 					</label>
 				</form>
@@ -68,7 +71,15 @@ const Header1 = (props) => {
 						{cartItemNumbers !== 0 ? cartItemNumbers : ''}
 					</div>
 
-					<FaUserAlt />
+					{!user.email ? (
+						<Link to="/login" className="link-icon">
+							<AiOutlineUserAdd />
+						</Link>
+					) : (
+						<div onClick={logOut} className="link-icon">
+							<AiOutlineUserDelete />
+						</div>
+					)}
 				</div>
 			</div>
 		</>

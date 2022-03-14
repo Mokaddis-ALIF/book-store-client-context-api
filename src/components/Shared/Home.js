@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import Cart from '../Cart/Cart';
 import Deal from '../Deal/Deal';
 import Featured from '../Featured/Featured';
-// import BottomNavbar from '../Non-Header/BottomNavbar';
-// import Header1 from '../Header/Header1';
-// import Header2 from '../Header/Header2';
+import BottomNavbar from '../Non-Header/BottomNavbar';
+// import Header1 from '../Non-Header/Header1';
+// import Header2 from '../Non-Header/Header2';
 import HomeBanner from '../HomeBanner/HomeBanner';
 import IconContainer from '../IconContainer/IconContainer';
 import NewArrival from '../NewArrival/NewArrival';
@@ -12,7 +12,7 @@ import NewsLetter from '../NewsLetter/NewsLetter';
 import Reviews from '../Reviews/Reviews';
 import Footer from '../Footer/Footer';
 
-const Home = ({ cartIsSHown, hideCartHandler }) => {
+const Home = ({ cartIsSHown, hideCartHandler, showCartHandler }) => {
 	const [products, setProducts] = useState([]);
 
 	useEffect(() => {
@@ -24,9 +24,8 @@ const Home = ({ cartIsSHown, hideCartHandler }) => {
 	return (
 		<>
 			{cartIsSHown && <Cart onClose={hideCartHandler} />}
-			{/* {<Header1 onShowCart={showCartHandler} />}
-			<Header2 /> */}
-			{/* <BottomNavbar /> */}
+
+			<BottomNavbar />
 			<HomeBanner products={products} />
 			<IconContainer />
 			<Featured products={products} />

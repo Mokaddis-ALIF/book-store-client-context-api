@@ -27,3 +27,9 @@
 .web-options:last-child {
 	margin-right: 0px;
 }
+
+#login,
+#logout {
+	color: white;
+	cursor: pointer;
+}

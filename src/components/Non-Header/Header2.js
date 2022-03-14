@@ -4,24 +4,22 @@ import useAuth from '../../Hooks/useAuth';
 import './Header2.css';
 
 const Header2 = () => {
-	const { user, logOut, authError } = useAuth();
-	console.log(user);
+	const { user, logOut } = useAuth();
+
 	return (
 		<>
 			<div className="header-2">
 				<nav className="navbar">
-					<a href="#home">home</a>
-					<a href="#featured">featured</a>
+					<a href="#featured">Books</a>
 					<a href="#arrivals">arrivals</a>
+					<a href="#newsletter">contacts</a>
 					<a href="#reviews">reviews</a>
-					<a href="#blogs">blogs</a>
 
-					{user ? (
-						<button onClick={logOut}>Logout</button>
+					{user.email ? (
+						<a onClick={logOut}>Logout</a>
 					) : (
 						<Link to="/login">Login</Link>
 					)}
-					{authError && <p>authError</p>}
 				</nav>
 			</div>
 		</>

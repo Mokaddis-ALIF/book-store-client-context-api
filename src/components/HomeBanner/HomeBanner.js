@@ -27,18 +27,6 @@ const HomeBanner = ({ products }) => {
 						</a>
 					</div>
 
-					{/* <div className="swiper books-slider">
-            <div className="swiper-wrapper">
-                <a href="#" className="swiper-slide"><img src="image/book-1.png" alt=""></a>
-                <a href="#" className="swiper-slide"><img src="image/book-2.png" alt=""></a>
-                <a href="#" className="swiper-slide"><img src="image/book-3.png" alt=""></a>
-                <a href="#" className="swiper-slide"><img src="image/book-4.png" alt=""></a>
-                <a href="#" className="swiper-slide"><img src="image/book-5.png" alt=""></a>
-                <a href="#" className="swiper-slide"><img src="image/book-6.png" alt=""></a>
-            </div>
-            <img src="image/stand.png" className="stand" alt=""/>
-        </div> */}
-
 					<Swiper
 						className="books-slider"
 						breakpoints={{
