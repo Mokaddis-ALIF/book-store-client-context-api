@@ -8,8 +8,8 @@ import Register from './components/Login/Register/Register';
 import Order from './components/Order/Order';
 import NotFound from './components/NotFound/NotFound';
 import Header1 from './components/Non-Header/Header1';
-import Header2 from './components/Non-Header/Header2';
 import MyOrder from './components/Order/MyOrder/MyOrder';
+import PrivateRoute from './components/Login/PrivateRoute/PrivateRoute';
 
 function App() {
 	const [cartIsSHown, setCartIsShown] = useState(false);
@@ -27,7 +27,6 @@ function App() {
 			<Router>
 				{/* <Header onShowCart={showCartHandler} /> */}
 				{<Header1 onShowCart={showCartHandler} />}
-				<Header2 />
 
 				<Switch>
 					<Route exact path="/">
@@ -44,12 +43,12 @@ function App() {
 					<Route exact path="/register">
 						<Register />
 					</Route>
-					<Route exact path="/orders">
+					<PrivateRoute exact path="/orders">
 						<Order />
-					</Route>
-					<Route exact path="/my-orders">
+					</PrivateRoute>
+					<PrivateRoute exact path="/my-orders">
 						<MyOrder />
-					</Route>
+					</PrivateRoute>
 					<Route exact path="*">
 						<NotFound />
 					</Route>

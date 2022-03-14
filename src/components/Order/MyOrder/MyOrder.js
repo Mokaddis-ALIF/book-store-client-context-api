@@ -10,25 +10,31 @@ const MyOrder = () => {
 	const { user } = useAuth();
 
 	const handleDelete = (id) => {
-		const url = `http://localhost:5000/orders/${id}`;
-		fetch(url, {
-			method: 'DELETE',
-		})
-			.then((res) => res.json())
-			.then((data) => {
-				console.log(data);
-				if (data.deletedCount) {
-					alert('Your order has been successfully Deleted');
-					const remainingOrders = myOrders.filter((order) => order._id !== id);
-					setMyOrders(remainingOrders);
-				}
-			});
+		const proceed = window.confirm('Are you sure you want to delete?');
+
+		if (proceed) {
+			const url = `https://intense-springs-14031.herokuapp.com/orders/${id}`;
+			fetch(url, {
+				method: 'DELETE',
+			})
+				.then((res) => res.json())
+				.then((data) => {
+					console.log(data);
+					if (data.deletedCount) {
+						alert('Your order has been successfully Deleted');
+						const remainingOrders = myOrders.filter(
+							(order) => order._id !== id
+						);
+						setMyOrders(remainingOrders);
+					}
+				});
+		}
 	};
 
 	useEffect(() => {
 		cartCtx.clearCart();
 
-		fetch(`http://localhost:5000/orders`)
+		fetch(`https://intense-springs-14031.herokuapp.com/orders`)
 			.then((res) => res.json())
 			.then((data) => setMyOrders(data));
 	}, [cartCtx]);

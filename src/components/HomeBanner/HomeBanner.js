@@ -22,7 +22,7 @@ const HomeBanner = ({ products }) => {
 							deserunt nostrum accusamus. Nam alias sit necessitatibus, aliquid
 							ex minima at!
 						</p>
-						<a href="#" className="btn">
+						<a href="#featured" className="btn">
 							shop now
 						</a>
 					</div>

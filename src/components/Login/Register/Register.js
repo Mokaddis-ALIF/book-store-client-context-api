@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
-import Blog from '../../../assets/image/blog-2.jpg';
+import { useHistory, useLocation } from 'react-router';
 
 import './Register.css';
 import { Link } from 'react-router-dom';
@@ -10,6 +9,9 @@ const Register = () => {
 	const [registerData, setRegisterData] = useState({});
 
 	const { user, registerUser, authError } = useAuth();
+
+	const location = useLocation();
+	const history = useHistory();
 
 	const handleOnChange = (e) => {
 		const field = e.target.name;
@@ -27,7 +29,7 @@ const Register = () => {
 			return;
 		}
 
-		registerUser(registerData.email, registerData.password);
+		registerUser(registerData.email, registerData.password, location, history);
 
 		e.preventDefault();
 	};

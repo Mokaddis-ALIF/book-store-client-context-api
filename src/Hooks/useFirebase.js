@@ -35,10 +35,12 @@ const useFirebase = () => {
 			.finally(() => setIsLoading(false));
 	};
 
-	const registerUser = (email, password) => {
+	const registerUser = (email, password, location, history) => {
 		setIsLoading(true);
 		createUserWithEmailAndPassword(auth, email, password)
 			.then((userCredential) => {
+				const destination = location?.state?.from || '/';
+				history.replace(destination);
 				setAuthError('');
 			})
 			.catch((error) => {
@@ -73,7 +75,7 @@ const useFirebase = () => {
 			setIsLoading(false);
 		});
 		return () => unSubscribe;
-	}, []);
+	}, [auth]);
 
 	const logOut = () => {
 		setIsLoading(true);

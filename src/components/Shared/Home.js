@@ -4,7 +4,7 @@ import Deal from '../Deal/Deal';
 import Featured from '../Featured/Featured';
 import BottomNavbar from '../Non-Header/BottomNavbar';
 // import Header1 from '../Non-Header/Header1';
-// import Header2 from '../Non-Header/Header2';
+import Header2 from '../Non-Header/Header2';
 import HomeBanner from '../HomeBanner/HomeBanner';
 import IconContainer from '../IconContainer/IconContainer';
 import NewArrival from '../NewArrival/NewArrival';
@@ -16,7 +16,7 @@ const Home = ({ cartIsSHown, hideCartHandler, showCartHandler }) => {
 	const [products, setProducts] = useState([]);
 
 	useEffect(() => {
-		fetch(`http://localhost:5000/products`)
+		fetch(`https://intense-springs-14031.herokuapp.com/products`)
 			.then((res) => res.json())
 			.then((data) => setProducts(data));
 	}, []);
@@ -24,6 +24,7 @@ const Home = ({ cartIsSHown, hideCartHandler, showCartHandler }) => {
 	return (
 		<>
 			{cartIsSHown && <Cart onClose={hideCartHandler} />}
+			<Header2 />
 
 			<BottomNavbar />
 			<HomeBanner products={products} />
