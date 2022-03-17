@@ -11,12 +11,14 @@ const Header2 = () => {
 			<div className="header-2">
 				<nav className="navbar">
 					<a href="#featured">Books</a>
-					<a href="#arrivals">arrivals</a>
+					<a href="#arrivals">New arrivals</a>
 					<a href="#newsletter">contacts</a>
 					<a href="#reviews">reviews</a>
 
 					{user.email ? (
-						<a onClick={logOut}>Logout</a>
+						<a href onClick={logOut}>
+							Logout
+						</a>
 					) : (
 						<Link to="/login">Login</Link>
 					)}

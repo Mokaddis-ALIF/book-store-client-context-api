@@ -17,8 +17,6 @@ function App() {
 
 	const [displayProducts, setDisplayProducts] = useState([]);
 
-	console.log(displayProducts);
-
 	const showCartHandler = () => {
 		setCartIsShown(true);
 	};
