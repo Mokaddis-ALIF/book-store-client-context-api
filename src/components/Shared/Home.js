@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Cart from '../Cart/Cart';
 import Deal from '../Deal/Deal';
 import Featured from '../Featured/Featured';
@@ -11,15 +11,19 @@ import NewArrival from '../NewArrival/NewArrival';
 import NewsLetter from '../NewsLetter/NewsLetter';
 import Reviews from '../Reviews/Reviews';
 import Footer from '../Footer/Footer';
-
-const Home = ({ cartIsSHown, hideCartHandler, showCartHandler }) => {
-	const [products, setProducts] = useState([]);
-
+import SearchResults from '../SearchResults/SearchResults';
+const Home = ({
+	cartIsSHown,
+	hideCartHandler,
+	displayProducts,
+	products,
+	setProducts,
+}) => {
 	useEffect(() => {
 		fetch(`https://intense-springs-14031.herokuapp.com/products`)
 			.then((res) => res.json())
 			.then((data) => setProducts(data));
-	}, []);
+	}, [setProducts]);
 
 	return (
 		<>
@@ -28,6 +32,9 @@ const Home = ({ cartIsSHown, hideCartHandler, showCartHandler }) => {
 
 			<BottomNavbar />
 			<HomeBanner products={products} />
+			{displayProducts.length > 0 && (
+				<SearchResults displayProducts={displayProducts} />
+			)}
 			<IconContainer />
 			<Featured products={products} />
 			<NewsLetter />

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './Header1.css';
 import { RiBook3Line } from 'react-icons/ri';
 import { RiDashboardFill } from 'react-icons/ri';
@@ -10,9 +10,18 @@ import CartContext from '../../store/cart-context';
 import { Link } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 
-const Header1 = (props) => {
+const Header1 = ({
+	onShowCart,
+	setDisplayProducts,
+	products,
+	displayProducts,
+}) => {
+	const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
+
 	const [showForm, setShowForm] = useState(false);
+
 	const cartCtx = useContext(CartContext);
+
 	const { user, logOut } = useAuth();
 
 	const cartItemNumbers = cartCtx.items.reduce((curNumber, item) => {
@@ -23,6 +32,32 @@ const Header1 = (props) => {
 		setShowForm(!showForm);
 	};
 
+	const handleSearch = (event) => {
+		const searchText = event.target.value;
+
+		const matchedProducts = products.filter((product) =>
+			product.name.toLowerCase().includes(searchText.toLowerCase())
+		);
+
+		setDisplayProducts(matchedProducts);
+	};
+
+	useEffect(() => {
+		if (cartCtx.items.length === 0) {
+			return;
+		}
+		setBtnIsHighlighted(true);
+
+		const timer = setTimeout(() => {
+			setBtnIsHighlighted(false);
+			// setMatches(false);
+		}, 300);
+
+		return () => {
+			clearTimeout(timer);
+		};
+	}, [cartCtx.items]);
+
 	return (
 		<>
 			<div className="header-1">
@@ -30,23 +65,35 @@ const Header1 = (props) => {
 					<RiBook3Line /> Bookly
 				</Link>
 
-				<form action="" className="search-form">
+				{/* <form action="" className="search-form">
 					<input
-						type="search"
-						name=""
+						type="text"
+						onChange={handleSearch}
 						placeholder="search here..."
 						id="search-box"
 					/>
 					<label htmlFor="search-box">
 						<BsSearch />
 					</label>
-				</form>
+				</form> */}
 
-				{showForm && (
-					<form action="" className="search-form active">
+				{showForm ? (
+					<form className="search-form active">
 						<input
-							type="search"
-							name=""
+							type="text"
+							onChange={handleSearch}
+							placeholder="search here..."
+							id="search-box"
+						/>
+						<label htmlFor="search-box">
+							<BsSearch />
+						</label>
+					</form>
+				) : (
+					<form action="" className="search-form">
+						<input
+							type="text"
+							onChange={handleSearch}
 							placeholder="search here..."
 							id="search-box"
 						/>
@@ -65,12 +112,6 @@ const Header1 = (props) => {
 						<BsSearch />
 					</div>
 
-					<RiDashboardFill />
-					<div className="cart" onClick={props.onShowCart}>
-						<BsFillCartFill />
-						{cartItemNumbers !== 0 ? cartItemNumbers : ''}
-					</div>
-
 					{!user.email ? (
 						<Link to="/login" className="link-icon">
 							<AiOutlineUserAdd />
@@ -80,6 +121,21 @@ const Header1 = (props) => {
 							<AiOutlineUserDelete />
 						</div>
 					)}
+					<Link
+						style={{ color: '#444', display: 'flex', alignItems: 'center' }}
+						to="/my-orders"
+					>
+						<RiDashboardFill />
+					</Link>
+					<div
+						className={btnIsHighlighted ? 'cart bump' : 'cart'}
+						onClick={onShowCart}
+					>
+						<BsFillCartFill />
+						<span id="cart_quantity">
+							{cartItemNumbers !== 0 ? cartItemNumbers : ''}
+						</span>
+					</div>
 				</div>
 			</div>
 		</>

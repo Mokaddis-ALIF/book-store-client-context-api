@@ -55,7 +55,7 @@ const Order = () => {
 					<>
 						<div className="order__left">
 							{cartCtx.items.map((item) => (
-								<div className="orderItems" key={item._id}>
+								<div className="orderItems" key={item.id}>
 									<img src={item.img} alt="" className="order__img" />
 									<div className="order__details">
 										<h2 className="order__title">

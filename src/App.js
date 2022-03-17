@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './components/Shared/Home';
 import CartProvider from './store/CartProvider';
 import Login from './components/Login/Login';
-// import Header from './components/Header/Header';
 import Register from './components/Login/Register/Register';
 import Order from './components/Order/Order';
 import NotFound from './components/NotFound/NotFound';
@@ -13,6 +12,12 @@ import PrivateRoute from './components/Login/PrivateRoute/PrivateRoute';
 
 function App() {
 	const [cartIsSHown, setCartIsShown] = useState(false);
+
+	const [products, setProducts] = useState([]);
+
+	const [displayProducts, setDisplayProducts] = useState([]);
+
+	console.log(displayProducts);
 
 	const showCartHandler = () => {
 		setCartIsShown(true);
@@ -26,14 +31,23 @@ function App() {
 		<CartProvider>
 			<Router>
 				{/* <Header onShowCart={showCartHandler} /> */}
-				{<Header1 onShowCart={showCartHandler} />}
+				{
+					<Header1
+						products={products}
+						setDisplayProducts={setDisplayProducts}
+						onShowCart={showCartHandler}
+						displayProducts={displayProducts}
+					/>
+				}
 
 				<Switch>
 					<Route exact path="/">
 						<Home
+							products={products}
+							setProducts={setProducts}
 							cartIsSHown={cartIsSHown}
 							hideCartHandler={hideCartHandler}
-							showCartHandler={showCartHandler}
+							displayProducts={displayProducts}
 						/>
 					</Route>
 

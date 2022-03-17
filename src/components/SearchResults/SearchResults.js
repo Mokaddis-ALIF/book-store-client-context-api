@@ -1,51 +1,37 @@
 import React from 'react';
-import './Featured.css';
+import FeaturedItem from '../Featured/FeaturedItem';
+import './SearchResults.css';
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
+
 // Import Swiper styles
 import 'swiper/css';
+import 'swiper/css/effect-flip';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 // import required modules
-import { Pagination, Navigation } from 'swiper';
-import FeaturedItem from './FeaturedItem';
+import { EffectFlip, Pagination, Navigation } from 'swiper';
 
-const Featured = ({ products }) => {
+const SearchResults = ({ displayProducts }) => {
 	return (
 		<>
 			<section className="featured" id="featured">
 				<h1 className="heading">
-					<span>featured books</span>
+					<span>searched books</span>
 				</h1>
 
 				<div className="swiper featured-slider">
 					<Swiper
-						breakpoints={{
-							// when window width is >= 640px
-							640: {
-								width: 640,
-								slidesPerView: 1,
-							},
-							// when window width is >= 768px
-							998: {
-								width: 998,
-								slidesPerView: 3,
-							},
-						}}
-						spaceBetween={30}
-						slidesPerGroup={3}
-						loop={true}
-						loopFillGroupWithBlank={true}
-						pagination={{
-							clickable: true,
-						}}
+						effect={'flip'}
+						grabCursor={true}
+						pagination={true}
 						navigation={true}
-						modules={[Pagination, Navigation]}
+						modules={[EffectFlip, Pagination, Navigation]}
 						className="mySwiper"
 					>
-						{products.slice(1).map((item) => (
+						{displayProducts.slice().map((item) => (
 							<SwiperSlide key={item._id} className="swiper-slide box">
 								{/* <div className="icons">
 								<FiSearch id="f-icon" />
@@ -63,4 +49,4 @@ const Featured = ({ products }) => {
 	);
 };
 
-export default Featured;
+export default SearchResults;
