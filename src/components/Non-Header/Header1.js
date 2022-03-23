@@ -65,18 +65,6 @@ const Header1 = ({
 					<RiBook3Line /> Bookly
 				</Link>
 
-				{/* <form action="" className="search-form">
-					<input
-						type="text"
-						onChange={handleSearch}
-						placeholder="search here..."
-						id="search-box"
-					/>
-					<label htmlFor="search-box">
-						<BsSearch />
-					</label>
-				</form> */}
-
 				{showForm ? (
 					<form className="search-form active">
 						<input

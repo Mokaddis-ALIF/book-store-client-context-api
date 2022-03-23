@@ -4,7 +4,7 @@ A simple yet gorgeous frontend made with **React**,authentication by **Firebase*
 
 1. It has two navbar upper one includes logo,search bar, 3 icons side by side where user can check orders,login/logout,cart & quantity
 2. The search bar results will not show immediately after writing the text the results will be shown under the banner one by one
-3. The lower navbar includes section like books,new ,contacts,reviews also user can login/logout from here
+3. The lower navbar includes section like books,new,contacts,reviews also user can login/logout from here
 4. Cart icon actually is a modal where it will show the selected book and from there user can increase and decrease the quantity also can jump to order page by clicking order
 5. Most used feature is here the swiper
 6. There is a cart icon with quantity in the navbar which will always animate or bump whenever any book is added or removed.
