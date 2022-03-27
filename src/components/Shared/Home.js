@@ -20,9 +20,14 @@ const Home = ({
 	setProducts,
 }) => {
 	useEffect(() => {
-		fetch(`https://intense-springs-14031.herokuapp.com/products`)
-			.then((res) => res.json())
-			.then((data) => setProducts(data));
+		async function fetchProducts() {
+			fetch(`https://intense-springs-14031.herokuapp.com/products`)
+				.then((res) => res.json())
+				.then((data) => setProducts(data))
+				.catch((err) => console.error(err));
+		}
+
+		fetchProducts();
 	}, [setProducts]);
 
 	return (
