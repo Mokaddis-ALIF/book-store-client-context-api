@@ -90,16 +90,16 @@ const Footer = () => {
 						<h3>contact info</h3>
 						<a href="#">
 							{' '}
-							<AiOutlinePhone className="footer_icon_contact" /> +123-456-7890{' '}
+							<AiOutlinePhone className="footer_icon_contact" /> +8801673913970{' '}
 						</a>
 						<a href="#">
 							{' '}
-							<AiOutlinePhone className="footer_icon_contact" /> +111-222-3333{' '}
+							<AiOutlinePhone className="footer_icon_contact" /> +8801673913970{' '}
 						</a>
 						<a href="#">
 							{' '}
 							<BiEnvelope className="footer_icon_contact" />{' '}
-							shaikhanas@gmail.com{' '}
+							mokaddis.alif@gmail.com{' '}
 						</a>
 						<img src="image/worldmap.png" className="map" alt="" />
 					</div>
