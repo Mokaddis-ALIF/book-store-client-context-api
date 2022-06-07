@@ -76,3 +76,9 @@
 	align-items: center;
 	justify-content: center;
 }
+
+.swiper-pagination {
+	bottom: -9px !important;
+
+	height: 20px;
+}

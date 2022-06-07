@@ -1,6 +1,7 @@
 import React from 'react';
 import './Reviews.css';
 import { BsStar } from 'react-icons/bs';
+import { BsFillStarFill } from 'react-icons/bs';
 import { BsStarHalf } from 'react-icons/bs';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -82,10 +83,10 @@ const Reviews = () => {
 								<h3>{r.name}</h3>
 								<p>{r.description}</p>
 								<div className="stars">
-									<BsStar id="star_icon" />
-									<BsStar id="star_icon" />
-									<BsStar id="star_icon" />
-									<BsStar id="star_icon" />
+									<BsFillStarFill id="star_icon" />
+									<BsFillStarFill id="star_icon" />
+									<BsFillStarFill id="star_icon" />
+									<BsFillStarFill id="star_icon" />
 									<BsStarHalf id="star_icon" />
 								</div>
 							</SwiperSlide>
