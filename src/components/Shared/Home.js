@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import './Home.css';
 import Cart from '../Cart/Cart';
 import Deal from '../Deal/Deal';
 import Featured from '../Featured/Featured';
 import BottomNavbar from '../Non-Header/BottomNavbar';
-// import Header1 from '../Non-Header/Header1';
 import Header2 from '../Non-Header/Header2';
 import HomeBanner from '../HomeBanner/HomeBanner';
 import IconContainer from '../IconContainer/IconContainer';
@@ -12,6 +12,7 @@ import NewsLetter from '../NewsLetter/NewsLetter';
 import Reviews from '../Reviews/Reviews';
 import Footer from '../Footer/Footer';
 import SearchResults from '../SearchResults/SearchResults';
+
 const Home = ({
 	cartIsSHown,
 	hideCartHandler,
@@ -19,16 +20,45 @@ const Home = ({
 	products,
 	setProducts,
 }) => {
-	useEffect(() => {
-		async function fetchProducts() {
-			fetch(`https://intense-springs-14031.herokuapp.com/products`)
-				.then((res) => res.json())
-				.then((data) => setProducts(data))
-				.catch((err) => console.error(err));
-		}
+	const [isLoading, setIsLoading] = useState(true);
+	const [httpError, setHttpError] = useState();
 
-		fetchProducts();
+	useEffect(() => {
+		const fetchProducts = async () => {
+			const response = await fetch(
+				`https://intense-springs-14031.herokuapp.com/products`
+			);
+
+			if (!response.ok) {
+				throw new Error('Something went wrong!');
+			}
+
+			const data = await response.json();
+			setProducts(data);
+			setIsLoading(false);
+		};
+
+		fetchProducts().catch((error) => {
+			setIsLoading(false);
+			setHttpError(error.message);
+		});
 	}, [setProducts]);
+
+	if (isLoading) {
+		return (
+			<section className="MealsLoading">
+				<p>Loading...</p>
+			</section>
+		);
+	}
+
+	if (httpError) {
+		return (
+			<section className="MealsError">
+				<p>{httpError}</p>
+			</section>
+		);
+	}
 
 	return (
 		<>

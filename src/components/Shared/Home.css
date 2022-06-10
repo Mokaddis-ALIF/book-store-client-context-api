@@ -1,0 +1,10 @@
+.MealsLoading {
+	text-align: center;
+	color: white;
+}
+
+.MealsError {
+	text-align: center;
+	color: red;
+	font-size: 30px;
+}
