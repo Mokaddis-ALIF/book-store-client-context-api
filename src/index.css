@@ -84,6 +84,17 @@ section {
 	font-weight: 500;
 }
 
+.spinner {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	width: 100vw;
+	height: 100vh;
+
+	background: var(--green);
+}
+
 .btn:hover {
 	background: var(--dark-color);
 }

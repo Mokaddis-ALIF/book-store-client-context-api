@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './components/Shared/Home';
 import CartProvider from './store/CartProvider';
@@ -9,6 +9,7 @@ import NotFound from './components/NotFound/NotFound';
 import Header1 from './components/Non-Header/Header1';
 import MyOrder from './components/Order/MyOrder/MyOrder';
 import PrivateRoute from './components/Login/PrivateRoute/PrivateRoute';
+import PuffLoader from 'react-spinners/PuffLoader';
 
 function App() {
 	const [cartIsSHown, setCartIsShown] = useState(false);
@@ -25,48 +26,70 @@ function App() {
 		setCartIsShown(false);
 	};
 
+	const [loading, setLoading] = useState(false);
+
+	useEffect(() => {
+		setLoading(true);
+		setTimeout(() => {
+			setLoading(false);
+		}, 1000);
+	}, []);
+
 	return (
-		<CartProvider>
-			<Router>
-				{/* <Header onShowCart={showCartHandler} /> */}
-				{
-					<Header1
-						products={products}
-						setDisplayProducts={setDisplayProducts}
-						onShowCart={showCartHandler}
-						displayProducts={displayProducts}
+		<>
+			{loading ? (
+				<div className="spinner">
+					<PuffLoader
+						color={'#219150'}
+						loading={loading}
+						size={500}
+						speedMultiplier={0.5}
 					/>
-				}
+				</div>
+			) : (
+				<CartProvider>
+					<Router>
+						{/* <Header onShowCart={showCartHandler} /> */}
+						{
+							<Header1
+								products={products}
+								setDisplayProducts={setDisplayProducts}
+								onShowCart={showCartHandler}
+								displayProducts={displayProducts}
+							/>
+						}
 
-				<Switch>
-					<Route exact path="/">
-						<Home
-							products={products}
-							setProducts={setProducts}
-							cartIsSHown={cartIsSHown}
-							hideCartHandler={hideCartHandler}
-							displayProducts={displayProducts}
-						/>
-					</Route>
+						<Switch>
+							<Route exact path="/">
+								<Home
+									products={products}
+									setProducts={setProducts}
+									cartIsSHown={cartIsSHown}
+									hideCartHandler={hideCartHandler}
+									displayProducts={displayProducts}
+								/>
+							</Route>
 
-					<Route exact path="/login">
-						<Login />
-					</Route>
-					<Route exact path="/register">
-						<Register />
-					</Route>
-					<PrivateRoute exact path="/orders">
-						<Order />
-					</PrivateRoute>
-					<PrivateRoute exact path="/my-orders">
-						<MyOrder />
-					</PrivateRoute>
-					<Route exact path="*">
-						<NotFound />
-					</Route>
-				</Switch>
-			</Router>
-		</CartProvider>
+							<Route exact path="/login">
+								<Login />
+							</Route>
+							<Route exact path="/register">
+								<Register />
+							</Route>
+							<PrivateRoute exact path="/orders">
+								<Order />
+							</PrivateRoute>
+							<PrivateRoute exact path="/my-orders">
+								<MyOrder />
+							</PrivateRoute>
+							<Route exact path="*">
+								<NotFound />
+							</Route>
+						</Switch>
+					</Router>
+				</CartProvider>
+			)}
+		</>
 	);
 }
 
