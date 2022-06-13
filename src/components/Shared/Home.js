@@ -23,21 +23,21 @@ const Home = ({
 	const [isLoading, setIsLoading] = useState(true);
 	const [httpError, setHttpError] = useState();
 
+	const fetchProducts = async () => {
+		const response = await fetch(
+			`https://intense-springs-14031.herokuapp.com/products`
+		);
+
+		if (!response.ok) {
+			throw new Error('Something went wrong!');
+		}
+
+		const data = await response.json();
+		setProducts(data);
+		setIsLoading(false);
+	};
+
 	useEffect(() => {
-		const fetchProducts = async () => {
-			const response = await fetch(
-				`https://intense-springs-14031.herokuapp.com/products`
-			);
-
-			if (!response.ok) {
-				throw new Error('Something went wrong!');
-			}
-
-			const data = await response.json();
-			setProducts(data);
-			setIsLoading(false);
-		};
-
 		fetchProducts().catch((error) => {
 			setIsLoading(false);
 			setHttpError(error.message);

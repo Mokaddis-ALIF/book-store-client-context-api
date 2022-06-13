@@ -18,9 +18,10 @@ const HomeBanner = ({ products }) => {
 					<div className="content">
 						<h3>upto 75% off</h3>
 						<p>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
-							deserunt nostrum accusamus. Nam alias sit necessitatibus, aliquid
-							ex minima at!
+							Bookselling is the commercial trading of books which is the retail
+							and distribution end of the publishing process. People who engage
+							in bookselling are called booksellers, bookdealers, bookpeople,
+							bookmen, or bookwomen
 						</p>
 						<a href="#featured" className="btn">
 							shop now

@@ -9,7 +9,7 @@ import NotFound from './components/NotFound/NotFound';
 import Header1 from './components/Non-Header/Header1';
 import MyOrder from './components/Order/MyOrder/MyOrder';
 import PrivateRoute from './components/Login/PrivateRoute/PrivateRoute';
-import PuffLoader from 'react-spinners/PuffLoader';
+import DotLoader from 'react-spinners/DotLoader';
 
 function App() {
 	const [cartIsSHown, setCartIsShown] = useState(false);
@@ -39,17 +39,16 @@ function App() {
 		<>
 			{loading ? (
 				<div className="spinner">
-					<PuffLoader
+					<DotLoader
 						color={'#219150'}
 						loading={loading}
 						size={500}
-						speedMultiplier={0.5}
+						speedMultiplier={0.9}
 					/>
 				</div>
 			) : (
 				<CartProvider>
 					<Router>
-						{/* <Header onShowCart={showCartHandler} /> */}
 						{
 							<Header1
 								products={products}
